@@ -1,0 +1,15 @@
+{
+  "name": "autoavaliarqacypress",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Personal Cypress complementary UI suite for Auto Avaliar: regression, responsive, a11y and SEO UI.",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test:smoke": "cypress run --spec cypress/e2e/regression/homolog-home.cy.ts,cypress/e2e/seo/document-head.cy.ts"
+  },
+  "devDependencies": {
+    "cypress": "15.21.1",
+    "typescript": "^5.9.2"
+  }
+}

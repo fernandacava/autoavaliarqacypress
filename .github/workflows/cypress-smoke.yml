@@ -1,0 +1,34 @@
+name: Cypress smoke
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    name: smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      BASE_URL: https://prices-client-418500670631.southamerica-east1.run.app
+      API_BASE_URL: https://prices-ms-core-dev-418500670631.southamerica-east1.run.app/api/v1/prices
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cypress smoke
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          spec: cypress/e2e/regression/homolog-home.cy.ts,cypress/e2e/seo/document-head.cy.ts
+
+      - name: Upload screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          if-no-files-found: ignore
+          retention-days: 7

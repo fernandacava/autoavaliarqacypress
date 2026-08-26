@@ -4,10 +4,16 @@ node_modules/
 !.env.example
 cypress/videos/
 cypress/screenshots/
+cypress/downloads/
 coverage/
 reports/
-evidences/private/
+evidences/
+evidencias/
+storageState.json
+auth.json
+*.har
 *.log
+*.zip
 .DS_Store
 Thumbs.db
 .idea/
